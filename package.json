@@ -1,0 +1,225 @@
+{
+  "name": "easy-env",
+  "displayName": "Facil ENV",
+  "description": "Administrador de entornos Python simple, visual y rápido desde VS Code.",
+  "publisher": "easyenv-dev",
+  "version": "1.0.5",
+  "icon": "media/easy-env-icon.png",
+  "engines": {
+    "vscode": "^1.106.0"
+  },
+  "categories": [
+    "Other",
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onView:easyEnvView",
+    "onView:easyEnvDashboard",
+    "onCommand:easyenv.refresh",
+    "onCommand:easyenv.createVenv",
+    "onCommand:easyenv.activateEnv",
+    "onCommand:easyenv.setWorkspaceInterpreter",
+    "onCommand:easyenv.deleteEnv",
+    "onCommand:easyenv.openEnvFolder",
+    "onCommand:easyenv.openEnvTerminal",
+    "onCommand:easyenv.showEnvPackages",
+    "onCommand:easyenv.installPackage",
+    "onCommand:easyenv.uninstallPackage",
+    "onCommand:easyenv.actions",
+    "onCommand:easyenv.about",
+    "onCommand:easyenv.togglePythonAutoActivate"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "easyEnvContainer",
+          "title": "Easy Env",
+          "icon": "media/easy-env-icon-bar1.png"
+        }
+      ]
+    },
+    "views": {
+      "easyEnvContainer": [
+        {
+          "id": "easyEnvView",
+          "name": "Python Environments"
+        },
+        {
+          "id": "easyEnvDashboard",
+          "name": "Easy Env Dashboard",
+          "type": "webview"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "easyenv.refresh",
+        "title": "Refrescar entornos",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "easyenv.createVenv",
+        "title": "Crear entorno venv",
+         "icon": "$(add)"
+      },
+      {
+        "command": "easyenv.activateEnv",
+        "title": "Easy Env: Activar entorno",
+        "icon" : "$(rocket)"
+      },
+      {
+        "command": "easyenv.setWorkspaceInterpreter",
+        "title": "Easy Env: Usar como intérprete del workspace",
+        "icon": "$(python)"
+      },
+      {
+        "command": "easyenv.deleteEnv",
+        "title": "Easy Env: Eliminar entorno",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "easyenv.openEnvFolder",
+        "title": "Easy Env: Abrir carpeta del entorno",
+        "icon": "$(folder-opened)"
+      },
+      {
+        "command": "easyenv.openEnvTerminal",
+        "title": "Easy Env: Abrir terminal en la ruta del entorno",
+        "icon": "$(terminal)"
+      },
+      {
+        "command": "easyenv.showEnvPackages",
+        "title": "Easy Env: Ver paquetes del entorno (pip list)",
+        "icon": "$(package)"
+      },
+      {
+        "command": "easyenv.installPackage",
+        "title": "Easy Env: Instalar paquete en entorno",
+        "icon": "$(cloud-download)"
+      },
+      {
+        "command": "easyenv.uninstallPackage",
+        "title": "Easy Env: Desinstalar paquete del entorno",
+        "icon": "$(clear-all)"
+      },
+      {
+        "command": "easyenv.actions",
+        "title": "Easy Env: Acciones rápidas sobre entorno…",
+        "icon": "$(zap)"
+      },
+      {
+        "command": "easyenv.togglePythonAutoActivate",
+        "title": "Easy Env: Alternar auto-activación de extensión Python"
+      },
+      {
+        "command": "easyenv.about",
+        "title": "Acerca de la extensión",
+        "icon": "$(info)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "easyenv.createVenv",
+          "when": "view == easyEnvView",
+          "group": "navigation@1"
+          
+        },
+        {
+          "command": "easyenv.refresh",
+          "when": "view == easyEnvView",
+          "group": "navigation@2"
+          
+        },
+        {
+          "command": "easyenv.about",
+          "when": "view == easyEnvView",
+          "group": "navigation@99"
+          
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "easyenv.activateEnv",
+          "when": "view == easyEnvView && viewItem == pythonEnv",
+          "group": "navigation@1"
+        },
+        {
+          "command": "easyenv.setWorkspaceInterpreter",
+          "when": "view == easyEnvView && viewItem == pythonEnv",
+          "group": "navigation@2"
+        },
+        {
+          "command": "easyenv.showEnvPackages",
+          "when": "view == easyEnvView && viewItem == pythonEnv",
+          "group": "navigation@3"
+        },
+        {
+          "command": "easyenv.installPackage",
+          "when": "view == easyEnvView && viewItem == pythonEnv",
+          "group": "navigation@4"
+        },
+        {
+          "command": "easyenv.uninstallPackage",
+          "when": "view == easyEnvView && viewItem == pythonEnv",
+          "group": "navigation@5"
+        },
+        {
+          "command": "easyenv.openEnvFolder",
+          "when": "view == easyEnvView && viewItem == pythonEnv",
+          "group": "navigation@6"
+        },
+        {
+          "command": "easyenv.openEnvTerminal",
+          "when": "view == easyEnvView && viewItem == pythonEnv",
+          "group": "navigation@7"
+        },
+        {
+          "command": "easyenv.deleteEnv",
+          "when": "view == easyEnvView && viewItem == pythonEnv",
+          "group": "navigation@8"
+        }
+      ]
+    }
+  },
+  "extensionKind": [
+    "ui"
+  ],
+  "authors": [
+    {
+      "name": "Nelson Enrique Polo",
+      "email": "polosoft1@gmail.com"
+    },
+    {
+      "name": "ChatGPT (AI Assistant)"
+    }
+  ],
+  "repository": {
+    "type": "personal",
+    "url": "https://github.com/polosoft"
+  },
+  "customCredit": "Extensión creada por Nelson Enrique Polo con la asistencia de GPT – 2025",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.106.0",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.39.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.3"
+  },
+  "dependencies": {
+    "@vscode/codicons": "^0.0.42"
+  }
+}

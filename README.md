@@ -1,2 +1,95 @@
-# Facil-ENV
-Administrador de entornos Python simple, visual y rápido desde VS Code.
+# 🐍 Easy Env — Administrador visual de entornos Python para VS Code
+
+**Install**
+
+![Texto alternativo](https://raw.githubusercontent.com/nepolBancolombiaSoft/ChatbotIA_WIKI/refs/heads/main/Instalacion.gif)
+
+**Crear un .ENV**
+
+![Texto alternativo](https://github.com/nepolBancolombiaSoft/ChatbotIA_WIKI/blob/main/crear_env.gif?raw=true)
+
+**Easy Env** es una extensión diseñada para gestionar entornos Python de forma simple, visual y veloz, directamente desde VS Code.  
+Incluye un **Dashboard DevOps**, administración completa de entornos `venv`, manejo de paquetes, activación en terminal y automatización de tareas comunes.
+
+**Importante**
+dejar que la extencion controle los entornos de python :
+  1. si Auto-activación Python: Activada ( ponerlo en desactivado)
+  2. Dar clic en boton : Alternar auto-activación Python 
+---
+
+## ⭐ Características principales
+
+✔ Crear o eliminar entornos Python  
+✔ Activar entornos en terminal  
+✔ Ver y administrar paquetes (`pip list`, instalar, desinstalar)  
+✔ Usar un entorno como intérprete del workspace  
+✔ Abrir la carpeta del entorno  
+✔ Abrir terminal ubicada en el entorno  
+✔ Dashboard visual con métricas del proyecto  
+✔ Botones de acción rápida  
+✔ Compatibilidad total: Windows / Linux / macOS  
+
+---
+
+## 📊 Dashboard DevOps (Vista interactiva)
+
+La vista Dashboard incluye:
+
+- Entorno activo  
+- Versión Python  
+- Ruta del entorno  
+- Número total de entornos  
+- Filtros por versión  
+- Acciones rápidas (crear entorno, instalar paquete, refrescar, ver paquetes, etc.)  
+- Tabla con todos los entornos detectados  
+
+![Dashboard Preview](https://via.placeholder.com/900x500/1e1e1e/ffffff?text=Easy+Env+Dashboard)
+
+---
+
+## ⚡ Comandos disponibles
+
+Puedes acceder desde la vista lateral **Easy Env** o desde la Palette (`Ctrl+Shift+P`).
+
+| Comando | Acción |
+|--------|--------|
+| **Easy Env: Crear entorno venv** | Crea un nuevo entorno virtual. |
+| **Easy Env: Activar entorno** | Abre terminal con el entorno activado. |
+| **Easy Env: Usar como intérprete del workspace** | Cambia el intérprete Python del proyecto. |
+| **Easy Env: Ver paquetes (pip list)** | Muestra los paquetes instalados. |
+| **Easy Env: Instalar paquete** | Instala un paquete con pip. |
+| **Easy Env: Desinstalar paquete** | Elimina un paquete. |
+| **Easy Env: Abrir carpeta del entorno** | Abre la ruta en el explorador. |
+| **Easy Env: Abrir terminal en entorno** | Terminal directamente en la carpeta. |
+| **Easy Env: Eliminar entorno** | Borra completamente el entorno. |
+
+---
+
+## 🧱 Cómo funciona
+
+Easy Env detecta entornos Python dentro del workspace revisando carpetas que contienen:
+
+- `Scripts/python.exe` (Windows)  
+- `bin/python` o `bin/python3` (Linux/macOS)
+
+
+🧪 Compatibilidad
+Sistema	Estado
+Windows	✔
+macOS	✔
+Linux	✔
+Python 3.8 → 3.13	✔
+
+
+👨‍💻 Autor
+
+Nelson Enrique Polo
+📧 polosoft1@gmail.com
+
+🔗 GitHub: https://github.com/polosoft
+
+Desarrollado con asistencia de ChatGPT – 2025.
+
+📄 Licencia
+
+MIT License.
