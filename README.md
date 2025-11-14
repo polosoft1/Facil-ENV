@@ -86,7 +86,7 @@ Python 3.8 → 3.13	✔
 Nelson Enrique Polo
 📧 polosoft1@gmail.com
 
-🔗 GitHub: https://github.com/polosoft
+🔗 GitHub: [https://github.com/polosoft1](https://github.com/polosoft1/Facil-ENV)
 
 Desarrollado con asistencia de ChatGPT – 2025.
 
