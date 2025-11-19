@@ -3,7 +3,7 @@
   "displayName": "Facil ENV",
   "description": "Administrador de entornos Python simple, visual y rápido desde VS Code.",
   "publisher": "easyenv-dev",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "icon": "media/easy-env-icon.png",
   "engines": {
     "vscode": "^1.106.0"
