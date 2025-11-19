@@ -1,12 +1,16 @@
 # 🐍 Easy Env — Administrador visual de entornos Python para VS Code
 
-**Install**
+**Install Facil ENV**
 
 ![Texto alternativo](https://raw.githubusercontent.com/nepolBancolombiaSoft/ChatbotIA_WIKI/refs/heads/main/Instalacion.gif)
 
-**Crear un .ENV**
+**Crear un entorno .ENV**
 
-![Texto alternativo](https://github.com/nepolBancolombiaSoft/ChatbotIA_WIKI/blob/main/crear_env.gif?raw=true)
+![Texto alternativo](https://raw.githubusercontent.com/nepolBancolombiaSoft/ChatbotIA_WIKI/refs/heads/main/crear_env.gif)
+
+**Acciones en Facil .ENV**
+
+![Texto alternativo](https://raw.githubusercontent.com/polosoft1/Facil-ENV/refs/heads/main/media/GIF/acciones.gif)
 
 **Easy Env** es una extensión diseñada para gestionar entornos Python de forma simple, visual y veloz, directamente desde VS Code.  
 Incluye un **Dashboard DevOps**, administración completa de entornos `venv`, manejo de paquetes, activación en terminal y automatización de tareas comunes.
@@ -43,7 +47,10 @@ La vista Dashboard incluye:
 - Acciones rápidas (crear entorno, instalar paquete, refrescar, ver paquetes, etc.)  
 - Tabla con todos los entornos detectados  
 
-![Dashboard Preview](https://via.placeholder.com/900x500/1e1e1e/ffffff?text=Easy+Env+Dashboard)
+![Dashboard Preview](https://github.com/polosoft1/Facil-ENV/blob/main/media/GIF/Dashboard.gif?raw=true)
+
+
+![Dashboard Preview](https://raw.githubusercontent.com/polosoft1/Facil-ENV/refs/heads/main/media/das.png)
 
 ---
 

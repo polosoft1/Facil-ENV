@@ -3,7 +3,7 @@
   "displayName": "Facil ENV",
   "description": "Administrador de entornos Python simple, visual y rápido desde VS Code.",
   "publisher": "easyenv-dev",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "icon": "media/easy-env-icon.png",
   "engines": {
     "vscode": "^1.106.0"
@@ -198,7 +198,7 @@
   ],
   "repository": {
     "type": "personal",
-    "url": "https://github.com/polosoft"
+    "url": "https://github.com/polosoft1/Facil-ENV"
   },
   "customCredit": "Extensión creada por Nelson Enrique Polo con la asistencia de GPT – 2025",
   "scripts": {
