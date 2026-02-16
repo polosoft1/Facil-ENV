@@ -1,9 +1,9 @@
 {
   "name": "easy-env",
   "displayName": "Facil ENV",
-  "description": "Administrador de entornos Python simple, visual y rápido desde VS Code.",
+  "description": "Administrador de entornos Python simple, visual y rapido desde VS Code.",
   "publisher": "easyenv-dev",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "icon": "media/easy-env-icon.png",
   "engines": {
     "vscode": "^1.106.0"
@@ -17,6 +17,7 @@
     "onView:easyEnvDashboard",
     "onCommand:easyenv.refresh",
     "onCommand:easyenv.createVenv",
+    "onCommand:easyenv.configurePostCreateDefaults",
     "onCommand:easyenv.activateEnv",
     "onCommand:easyenv.setWorkspaceInterpreter",
     "onCommand:easyenv.deleteEnv",
@@ -24,9 +25,12 @@
     "onCommand:easyenv.openEnvTerminal",
     "onCommand:easyenv.showEnvPackages",
     "onCommand:easyenv.installPackage",
+    "onCommand:easyenv.installProjectDeps",
     "onCommand:easyenv.uninstallPackage",
     "onCommand:easyenv.actions",
     "onCommand:easyenv.about",
+    "onCommand:easyenv.runDiagnostics",
+    "onCommand:easyenv.installManager",
     "onCommand:easyenv.togglePythonAutoActivate"
   ],
   "main": "./out/extension.js",
@@ -61,17 +65,22 @@
       },
       {
         "command": "easyenv.createVenv",
-        "title": "Crear entorno venv",
-         "icon": "$(add)"
+        "title": "Crear entorno Python (wizard)",
+        "icon": "$(add)"
+      },
+      {
+        "command": "easyenv.configurePostCreateDefaults",
+        "title": "Easy Env: Configurar acciones post-creacion",
+        "icon": "$(settings-gear)"
       },
       {
         "command": "easyenv.activateEnv",
         "title": "Easy Env: Activar entorno",
-        "icon" : "$(rocket)"
+        "icon": "$(rocket)"
       },
       {
         "command": "easyenv.setWorkspaceInterpreter",
-        "title": "Easy Env: Usar como intérprete del workspace",
+        "title": "Easy Env: Usar como interprete del workspace",
         "icon": "$(python)"
       },
       {
@@ -100,22 +109,37 @@
         "icon": "$(cloud-download)"
       },
       {
+        "command": "easyenv.installProjectDeps",
+        "title": "Easy Env: Instalar dependencias del proyecto",
+        "icon": "$(package)"
+      },
+      {
         "command": "easyenv.uninstallPackage",
         "title": "Easy Env: Desinstalar paquete del entorno",
         "icon": "$(clear-all)"
       },
       {
         "command": "easyenv.actions",
-        "title": "Easy Env: Acciones rápidas sobre entorno…",
+        "title": "Easy Env: Acciones rapidas sobre entorno...",
         "icon": "$(zap)"
       },
       {
         "command": "easyenv.togglePythonAutoActivate",
-        "title": "Easy Env: Alternar auto-activación de extensión Python"
+        "title": "Easy Env: Alternar auto-activacion de extension Python"
+      },
+      {
+        "command": "easyenv.runDiagnostics",
+        "title": "Easy Env: Diagnostico del entorno",
+        "icon": "$(pulse)"
+      },
+      {
+        "command": "easyenv.installManager",
+        "title": "Easy Env: Instalar o configurar gestor (uv/conda/poetry/pipenv)",
+        "icon": "$(cloud-download)"
       },
       {
         "command": "easyenv.about",
-        "title": "Acerca de la extensión",
+        "title": "Acerca de la extension",
         "icon": "$(info)"
       }
     ],
@@ -125,19 +149,26 @@
           "command": "easyenv.createVenv",
           "when": "view == easyEnvView",
           "group": "navigation@1"
-          
         },
         {
           "command": "easyenv.refresh",
           "when": "view == easyEnvView",
           "group": "navigation@2"
-          
+        },
+        {
+          "command": "easyenv.runDiagnostics",
+          "when": "view == easyEnvView",
+          "group": "navigation@3"
+        },
+        {
+          "command": "easyenv.installManager",
+          "when": "view == easyEnvView",
+          "group": "navigation@4"
         },
         {
           "command": "easyenv.about",
           "when": "view == easyEnvView",
           "group": "navigation@99"
-          
         }
       ],
       "view/item/context": [
@@ -155,6 +186,11 @@
           "command": "easyenv.showEnvPackages",
           "when": "view == easyEnvView && viewItem == pythonEnv",
           "group": "navigation@3"
+        },
+        {
+          "command": "easyenv.installProjectDeps",
+          "when": "view == easyEnvView && viewItem == pythonEnv",
+          "group": "navigation@3.5"
         },
         {
           "command": "easyenv.installPackage",
@@ -182,6 +218,31 @@
           "group": "navigation@8"
         }
       ]
+    },
+    "configuration": {
+      "title": "Easy Env",
+      "properties": {
+        "easyenv.condaPath": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Ruta completa al ejecutable de conda (ej: `C:\\\\Users\\\\<usuario>\\\\miniconda3\\\\Scripts\\\\conda.exe`). Se usa cuando conda no esta en PATH."
+        },
+        "easyenv.uvPath": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Ruta completa al ejecutable de uv (ej: `C:\\\\Users\\\\<usuario>\\\\AppData\\\\Roaming\\\\Python\\\\Python313\\\\Scripts\\\\uv.exe`). Se usa cuando uv no esta en PATH."
+        },
+        "easyenv.poetryPath": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Ruta completa al ejecutable de poetry (ej: `C:\\\\Users\\\\<usuario>\\\\AppData\\\\Roaming\\\\Python\\\\Python313\\\\Scripts\\\\poetry.exe`). Se usa cuando poetry no esta en PATH."
+        },
+        "easyenv.pipenvPath": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Ruta completa al ejecutable de pipenv (ej: `C:\\\\Users\\\\<usuario>\\\\AppData\\\\Roaming\\\\Python\\\\Python313\\\\Scripts\\\\pipenv.exe`). Se usa cuando pipenv no esta en PATH."
+        }
+      }
     }
   },
   "extensionKind": [
@@ -200,7 +261,7 @@
     "type": "personal",
     "url": "https://github.com/polosoft1/Facil-ENV"
   },
-  "customCredit": "Extensión creada por Nelson Enrique Polo con la asistencia de GPT – 2025",
+  "customCredit": "Extension creada por Nelson Enrique Polo con asistencia de GPT - 2025",
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",

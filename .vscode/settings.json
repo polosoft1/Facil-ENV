@@ -8,5 +8,8 @@
 	},
 	// Turn off tsc task auto detection since we have the necessary tasks as npm scripts
 	"typescript.tsc.autoDetect": "off",
-	"python.defaultInterpreterPath": "c:\\easy-env_v1\\1\\.venv\\Scripts\\python.exe"
+	"python.defaultInterpreterPath": "c:\\easy-env_v1\\1\\.venv\\Scripts\\python.exe",
+	"files.readonlyInclude": {
+		"{**/.c4z/.extsrcs/*.PROTSYM.cbl,**/.c4z/.extsrcs/*.PROTSYM.listing}": true
+	}
 }

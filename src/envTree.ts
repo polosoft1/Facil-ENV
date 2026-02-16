@@ -2,7 +2,6 @@ import * as vscode from 'vscode';
 import { PythonEnv } from './envManager';
 
 export class EnvTreeProvider implements vscode.TreeDataProvider<PythonEnv> {
-
   private _onDidChangeTreeData: vscode.EventEmitter<PythonEnv | undefined | null> =
     new vscode.EventEmitter<PythonEnv | undefined | null>();
 
@@ -19,22 +18,18 @@ export class EnvTreeProvider implements vscode.TreeDataProvider<PythonEnv> {
   getTreeItem(env: PythonEnv): vscode.TreeItem {
     const item = new vscode.TreeItem(env.name, vscode.TreeItemCollapsibleState.None);
 
-    // Descripción: versión de Python si la tenemos
-    item.description = env.version ?? env.type;
+    // Descripcion: manager + version de Python.
+    item.description = `${env.type} | ${env.version ?? 'Python ?'}`;
 
-    // Icono: check si es intérprete activo, terminal si no
+    // Icono: check si es interprete activo, terminal si no.
     item.iconPath = new vscode.ThemeIcon(env.isActive ? 'check-all' : 'debug-console');
 
-    // Tooltip con detalles
     item.tooltip = `Nombre: ${env.name}
 Tipo: ${env.type}
 Python: ${env.pythonPath}
-Versión: ${env.version ?? 'N/D'}`;
+Version: ${env.version ?? 'N/D'}`;
 
-    // Contexto para menús
     item.contextValue = 'pythonEnv';
-
-    // Clic: activar entorno
     item.command = {
       command: 'easyenv.activateEnv',
       title: 'Activar entorno',
